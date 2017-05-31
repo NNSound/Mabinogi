@@ -33,10 +33,8 @@ public class Returntozero extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	Boolean timevalue(int i){
-	
-			return true;
-	
+	Boolean telltrue(){	
+			return A;	
 	}
 
 	public Returntozero() {
@@ -57,8 +55,8 @@ public class Returntozero extends JDialog {
 				JButton okButton = new JButton("Yes");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						//§i¶DJF ¥i¥HÂk0
-						
+						//Â§iÂ¶DJF Â¥iÂ¥HÃ‚k0
+						A=true;
 					}
 				});
 				okButton.setActionCommand("OK");
