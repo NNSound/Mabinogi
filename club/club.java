@@ -61,7 +61,16 @@ public class club extends JFrame {
 				 3,6,2,3,3,5,6,1,1,5,
 				 5,5,5,6,3,3,1,4,1};
 
-	
+	//希望把這邊的兩個陣列放到data 需要時在拿 範例如下
+	/*
+	int [] Tellarr(String name){//回傳陣列　拿到我要的成員陣列
+	//給出成員名稱，回傳成員陣列
+	if(name.equal("aixi"))
+		return aixi;
+	if(name.equal("aile"))
+		return aile;
+	}
+	*/
 	private JPanel contentPane;
 
 	/**
