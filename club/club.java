@@ -255,12 +255,19 @@ public class club extends JFrame {
 		JButton btnReturn_aixi = new JButton("return 0");
 		btnReturn_aixi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				telltrue tt;
-				//if(aixi_time>=96){
-					Returntozero GUI = new Returntozero();
+				Returntozero GUI = new Returntozero();
+				if(aixi_time>=96){
 					GUI.setVisible(true);
-					//tt.telltrue(true);
-				//}
+					if(GUI.telltrue()){
+						aixi_time=0;
+						try {
+							Bufwrite();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
+				GUI.tellfalse();
 			}
 		});
 		btnReturn_aixi.setBounds(10, 163, 87, 23);
@@ -278,16 +285,4 @@ public class club extends JFrame {
 		
 		
 	}
-}
-class telltrue                                     //一個隨便定義的Class  表示 Dialog也可以回傳給Frame 自訂義Class
-{
- boolean s;
- public telltrue(boolean k)
- {
-  s=k;
- }
- public boolean getboolean()
- {
-  return s;
- }
 }
