@@ -1,9 +1,8 @@
 package club;
 
+import java.awt.AWTException;
 import java.awt.EventQueue;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -18,110 +17,38 @@ import java.awt.event.ActionEvent;
 
 
 public class club extends JFrame {
-/*p
- * æ¯å€‹è§’è‰²æ‡‰è©²æœ‰å„è‡ªçš„è¨ˆæ•¸å™¨ æ”¾åœ¨å¤–éƒ¨æ–‡ä»¶
- * å…§éƒ¨æ‡‰æœ‰é™£åˆ—å­˜æ”¾é¨å£«åœ˜è¡¨æ ¼ä¾›GUIåƒç…§
- * æ¯æ¬¡è§¸ç™¼btnæ™‚æ‡‰å³æ™‚æ›´æ”¹å¤–éƒ¨æ–‡ä»¶
+/*
+ * ¨C­Ó¨¤¦âÀ³¸Ó¦³¦U¦Ûªº­p¼Æ¾¹ ©ñ¦b¥~³¡¤å¥ó
+ * ¤º³¡À³¦³°}¦C¦s©ñÃM¤h¹Îªí®æ¨ÑGUI°Ñ·Ó
+ * ¨C¦¸Ä²µobtn®ÉÀ³§Y®É§ó§ï¥~³¡¤å¥ó
  * 
 
 	
-	å¦‚æœé»åˆ°97ä¹‹å¾Œï¼Œæœƒå›å»è¡¨æ ¼ä¸€é–‹å§‹çš„ä½ç½®
-ä½†æ˜¯é€™æ˜¯æœ‰æ¢ä»¶çš„
-(ä¾‹ï¼šç¬¬ä¸€å¤© 95(O)â†’96(O)â†’97(O)â†’ ç¬¬äºŒå¤© 1(O)â†’2(O)â†’3(O)â†’ ...
-(ä¾‹ï¼šç¬¬ä¸€å¤© 96(O)â†’97(O)â†’98(O)â†’ ç¬¬äºŒå¤© 2(O)â†’3(O)â†’4(O)â†’ ...
-(ä¾‹ï¼šç¬¬ä¸€å¤© 97(O)â†’98(O)â†’99(O)â†’ ç¬¬äºŒå¤© 3(O)â†’4(O)â†’5(O)â†’ ...
-(ä¾‹ï¼šç¬¬ä¸€å¤© 97(O)â†’98(O)â†’çµæŸ)â†’ ç¬¬äºŒå¤© 2(O)â†’3(O)â†’4(O)â†’ ...
-(ä¾‹ï¼šç¬¬ä¸€å¤© 97(O)â†’98(O)â†’99(X)â†’ ç¬¬äºŒå¤© 2(O)â†’3(O)â†’4(O)â†’ ...
-(ä¾‹ï¼šç¬¬ä¸€å¤© 97(O)â†’98(X)â†’çµæŸ)â†’ ç¬¬äºŒå¤© 1(O)â†’2(O)â†’3(O)â†’ ...
-(ä¾‹ï¼šç¬¬ä¸€å¤© 96(O)â†’97(O)â†’çµæŸ)â†’ ç¬¬äºŒå¤© 1(O)â†’2(O)â†’3(O)â†’ ...
-(ä¾‹ï¼šç¬¬ä¸€å¤© 97(O)â†’çµæŸ98(X)â†’)â†’ ç¬¬äºŒå¤© 1(O)â†’2(O)â†’3(O)â†’ ...)
+	¦pªGÂI¨ì97¤§«á¡A·|¦^¥hªí®æ¤@¶}©lªº¦ì¸m
+¦ı¬O³o¬O¦³±ø¥óªº
+(¨Ò¡G²Ä¤@¤Ñ 95(O)¡÷96(O)¡÷97(O)¡÷ ²Ä¤G¤Ñ 1(O)¡÷2(O)¡÷3(O)¡÷ ...
+(¨Ò¡G²Ä¤@¤Ñ 96(O)¡÷97(O)¡÷98(O)¡÷ ²Ä¤G¤Ñ 2(O)¡÷3(O)¡÷4(O)¡÷ ...
+(¨Ò¡G²Ä¤@¤Ñ 97(O)¡÷98(O)¡÷99(O)¡÷ ²Ä¤G¤Ñ 3(O)¡÷4(O)¡÷5(O)¡÷ ...
+(¨Ò¡G²Ä¤@¤Ñ 97(O)¡÷98(O)¡÷µ²§ô)¡÷ ²Ä¤G¤Ñ 2(O)¡÷3(O)¡÷4(O)¡÷ ...
+(¨Ò¡G²Ä¤@¤Ñ 97(O)¡÷98(O)¡÷99(X)¡÷ ²Ä¤G¤Ñ 2(O)¡÷3(O)¡÷4(O)¡÷ ...
+(¨Ò¡G²Ä¤@¤Ñ 97(O)¡÷98(X)¡÷µ²§ô)¡÷ ²Ä¤G¤Ñ 1(O)¡÷2(O)¡÷3(O)¡÷ ...
+(¨Ò¡G²Ä¤@¤Ñ 96(O)¡÷97(O)¡÷µ²§ô)¡÷ ²Ä¤G¤Ñ 1(O)¡÷2(O)¡÷3(O)¡÷ ...
+(¨Ò¡G²Ä¤@¤Ñ 97(O)¡÷µ²§ô98(X)¡÷)¡÷ ²Ä¤G¤Ñ 1(O)¡÷2(O)¡÷3(O)¡÷ ...)
 
  */
-	static String[] arr = new String[2];//å®£å‘Šé™£åˆ— æ”¾ç½®inputçš„å€¼
-	static int aile_time,aixi_time;
-	static int aile[]= {1,3,4,3,1,3,1,1,2,1,//1~10 //è‰¾æ¨‚
-				 2,5,2,2,4,6,2,5,1,2,//11~20
-				 6,5,6,6,4,2,4,3,5,5,//21~30
-				 1,1,1,2,2,2,1,4,1,1,
-				 4,3,3,2,4,3,4,4,1,4,
-				 2,1,1,2,2,6,6,1,2,4,
-				 3,5,2,2,4,1,2,1,1,1,
-				 3,2,2,3,2,1,2,1,2,5,
-				 1,2,4,1,5,3,2,2,4,4,
-				 1,2,4,1,1,6,4,6,2};
 	
-	static int aixi[]= {4,3,5,6,5,3,6,6,3,1,//è‰¾å¸Œ
-				 2,3,6,3,2,3,1,4,3,3,
-				 3,6,3,4,3,6,1,5,3,3,
-				 3,6,4,6,2,6,3,4,1,2,
-				 3,3,1,6,4,6,4,3,3,6,
-				 3,2,6,3,1,3,3,3,5,6,
-				 3,3,1,2,6,6,3,3,3,5,
-				 3,2,4,3,5,3,5,6,1,3,
-				 3,6,2,3,3,5,6,1,1,5,
-				 5,5,5,6,3,3,1,4,1};
-
-	//å¸Œæœ›æŠŠé€™é‚Šçš„å…©å€‹é™£åˆ—æ”¾åˆ°data éœ€è¦æ™‚åœ¨æ‹¿ ç¯„ä¾‹å¦‚ä¸‹
-	/*
-	int [] Tellarr(String name){//å›å‚³é™£åˆ—ã€€æ‹¿åˆ°æˆ‘è¦çš„æˆå“¡é™£åˆ—
-	//çµ¦å‡ºæˆå“¡åç¨±ï¼Œå›å‚³æˆå“¡é™£åˆ—
-	if(name.equal("aixi"))
-		return aixi;
-	if(name.equal("aile"))
-		return aile;
-	}
-	*/
 	private JPanel contentPane;
-
+	int arr[];
+	robotfile data=new robotfile();
+	int aile_time=data.telltime("aile");
+	int aixi_time=data.telltime("aixi");
+//int aile_time,aixi_time;
 	/**
 	 * Launch the application.
 	 */
-	public static String sixfeel(int i){
-		String name;
-		if(i==1)
-			name="1.ä»»å‹™";
-		else if(i==2)
-			name="2.ä¿®ç·´";
-		else if(i==3)
-			name="3.éŠæˆ²";
-		else if(i==4)
-			name="4.é£Ÿç‰©";
-		else if(i==5)
-			name="5.æ™‚å°š";
-		else 
-			name="6.æˆ€æ„›";
-		return name;		
-	}
-	private static void Bufwrite() throws IOException{
-		FileWriter fw = new FileWriter("74club.txt");
-		fw.write("aile "+aile_time+"\naixi "+aixi_time);
-		fw.flush();
-		fw.close();
-	}
-	private static void BufRead(String Q) throws IOException{
-	    FileReader fr = new FileReader(Q);//è®€å–æª”æ¡ˆ
-		BufferedReader br = new BufferedReader(fr);//è®€å–æª”æ¡ˆä¸­çš„å­—ä¸²
-		String line;//è®€å–ç¬¬Nè¡Œçš„å­—ä¸²
-	    int k=0;//è¨ˆæ•¸å™¨
-	    while((line = br.readLine())!=null)//ç•¶æª”æ¡ˆä¸­é‚„æœ‰è³‡æ–™æ™‚ å°±åŸ·è¡Œè¿´åœˆ
-	    {	  
-	    	arr[k]= line;//å°‡è³‡æ–™æ”¾åˆ°é™£åˆ—	    	
-	    	k++;//è¨ˆæ•¸å™¨+1
-	    }	   
-	}//end BufRead
-	public static void main(String[] args) {
-		try {
-			BufRead("74club.txt");
-		} catch (IOException e1) {
-			// TODO è‡ªå‹•ç”¢ç”Ÿçš„ catch å€å¡Š
-			e1.printStackTrace();
-		}
-		aile_time=Integer.valueOf(arr[0].substring(5,7));
-		aixi_time=Integer.valueOf(arr[1].substring(5,7));	
+	public static void main(String[] args) throws AWTException{
+		
 		//System.out.println(aile_time);
-		//System.out.println(sixfeel(aile[aile_time]));		
-		
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -137,7 +64,8 @@ public class club extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public club() {
+	public club() throws AWTException{
+//	 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -154,36 +82,40 @@ public class club extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JTextArea textArea_aixi = new JTextArea();
-		textArea_aixi.setBounds(10, 35, 87, 52);		
-		textArea_aixi.append((aixi_time+1)+">>"+sixfeel(aixi[aixi_time])+"\n");
-		textArea_aixi.append((aixi_time+2)+">>"+sixfeel(aixi[aixi_time+1])+"\n");
-		textArea_aixi.append((aixi_time+3)+">>"+sixfeel(aixi[aixi_time+2])+"\n");
+		textArea_aixi.setBounds(10, 35, 87, 52);
+		arr=data.Tellarr("aixi");
+		textArea_aixi.append((aixi_time+1)+">>"+data.sixfeel(arr[aixi_time])+"\n");
+		textArea_aixi.append((aixi_time+2)+">>"+data.sixfeel(arr[aixi_time+1])+"\n");
+		textArea_aixi.append((aixi_time+3)+">>"+data.sixfeel(arr[aixi_time+2])+"\n");
 		contentPane.add(textArea_aixi);
 		
 		JTextArea textArea_aile = new JTextArea();
 		textArea_aile.setBounds(107, 35, 89, 52);
-		textArea_aile.append((aile_time+1)+">>"+sixfeel(aile[aile_time])+"\n");
-		textArea_aile.append((aile_time+2)+">>"+sixfeel(aile[aile_time+1])+"\n");
-		textArea_aile.append((aile_time+3)+">>"+sixfeel(aile[aile_time+2])+"\n");
+		arr=data.Tellarr("aile");
+		textArea_aile.append((aile_time+1)+">>"+data.sixfeel(arr[aile_time])+"\n");
+		textArea_aile.append((aile_time+2)+">>"+data.sixfeel(arr[aile_time+1])+"\n");
+		textArea_aile.append((aile_time+3)+">>"+data.sixfeel(arr[aile_time+2])+"\n");
 		contentPane.add(textArea_aile);
 		
 		JButton button_aixi = new JButton("+1");
 		button_aixi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//æŒ‰å®Œä¹‹å¾Œç´€éŒ„åœ¨ç¨‹å¼
-				if(aixi_time<96)//0~95>>è¡¨ä¸­çš„0~96
+				//«ö§¹¤§«á¬ö¿ı¦bµ{¦¡
+				if(aixi_time<96)//0~95>>ªí¤¤ªº0~96
 					aixi_time++;
-//				else if(aixi_time==96)//æŒ‰å®Œ97 ä¹‹å¾Œè©²å›åˆ°1 
+//				else if(aixi_time==96)//«ö§¹97 ¤§«á¸Ó¦^¨ì1 
 //					aixi_time=0;
-				textArea_aixi.setText((aixi_time)+">>"+sixfeel(aixi[aixi_time])+"\n");
-				textArea_aixi.append((aixi_time+1)+">>"+sixfeel(aixi[aixi_time+1])+"\n");
-				textArea_aixi.append((aixi_time+2)+">>"+sixfeel(aixi[aixi_time+2])+"\n");
-				//ä¹‹å¾Œç´€éŒ„åˆ°txt
-				try {
-					Bufwrite();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				arr=data.Tellarr("aixi");
+				textArea_aixi.setText((aixi_time)+">>"+data.sixfeel(arr[aixi_time])+"\n");
+				textArea_aixi.append((aixi_time+1)+">>"+data.sixfeel(arr[aixi_time+1])+"\n");
+				textArea_aixi.append((aixi_time+2)+">>"+data.sixfeel(arr[aixi_time+2])+"\n");
+				//¤§«á¬ö¿ı¨ìtxt
+					try {
+						data.Bufwrite();
+					} catch (IOException e) {
+						e.printStackTrace();
+					} 
+				
 			}
 		});
 		button_aixi.setBounds(10, 97, 87, 23);
@@ -192,20 +124,24 @@ public class club extends JFrame {
 		JButton button_aile = new JButton("+1");
 		button_aile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//æŒ‰å®Œä¹‹å¾Œç´€éŒ„åœ¨ç¨‹å¼
-				if(aile_time<96)//0~95>>è¡¨ä¸­çš„0~96
+				//«ö§¹¤§«á¬ö¿ı¦bµ{¦¡
+				if(aile_time<96)//0~95>>ªí¤¤ªº0~96
 					aile_time++;
-//				else if(aile_time==96)//æŒ‰å®Œ97 ä¹‹å¾Œè©²å›åˆ°1 
+//				else if(aile_time==96)//«ö§¹97 ¤§«á¸Ó¦^¨ì1 
 //					aile_time=0;
-				textArea_aile.setText((aile_time)+">>"+sixfeel(aile[aile_time])+"\n");
-				textArea_aile.append((aile_time+1)+">>"+sixfeel(aile[aile_time+1])+"\n");
-				textArea_aile.append((aile_time+2)+">>"+sixfeel(aile[aile_time+2])+"\n");
-				//ä¹‹å¾Œç´€éŒ„åˆ°txt
+				arr=data.Tellarr("aile");
+				textArea_aile.setText((aile_time)+">>"+data.sixfeel(arr[aile_time])+"\n");
+				textArea_aile.append((aile_time+1)+">>"+data.sixfeel(arr[aile_time+1])+"\n");
+				textArea_aile.append((aile_time+2)+">>"+data.sixfeel(arr[aile_time+2])+"\n");
+				//¤§«á¬ö¿ı¨ìtxt
+				
 				try {
-					Bufwrite();
+					data.Bufwrite();
 				} catch (IOException e1) {
+					// TODO ¦Û°Ê²£¥Íªº catch °Ï¶ô
 					e1.printStackTrace();
 				}
+				
 
 			}
 		});
@@ -216,15 +152,20 @@ public class club extends JFrame {
 		button_aixi_error.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aixi_time--;
-				textArea_aixi.setText((aixi_time)+">>"+sixfeel(aixi[aixi_time])+"\n");
-				textArea_aixi.append((aixi_time+1)+">>"+sixfeel(aixi[aixi_time+1])+"\n");
-				textArea_aixi.append((aixi_time+2)+">>"+sixfeel(aixi[aixi_time+2])+"\n");
-				//ä¹‹å¾Œç´€éŒ„åˆ°txt
-				try {
-					Bufwrite();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				arr=data.Tellarr("aixi");
+
+				textArea_aixi.setText((aixi_time)+">>"+data.sixfeel(arr[aixi_time])+"\n");
+				textArea_aixi.append((aixi_time+1)+">>"+data.sixfeel(arr[aixi_time+1])+"\n");
+				textArea_aixi.append((aixi_time+2)+">>"+data.sixfeel(arr[aixi_time+2])+"\n");
+				//¤§«á¬ö¿ı¨ìtxt
+				
+					try {
+						data.Bufwrite();
+					} catch (IOException e1) {
+						// TODO ¦Û°Ê²£¥Íªº catch °Ï¶ô
+						e1.printStackTrace();
+					}
+				
 			}
 		});
 		button_aixi_error.setBounds(10, 130, 87, 23);
@@ -234,15 +175,16 @@ public class club extends JFrame {
 		button_aile_error.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aile_time--;
-				textArea_aile.setText((aile_time)+">>"+sixfeel(aile[aile_time])+"\n");
-				textArea_aile.append((aile_time+1)+">>"+sixfeel(aile[aile_time+1])+"\n");
-				textArea_aile.append((aile_time+2)+">>"+sixfeel(aile[aile_time+2])+"\n");
-				//ä¹‹å¾Œç´€éŒ„åˆ°txt
+				arr=data.Tellarr("aile");
+				textArea_aile.setText((aile_time)+">>"+data.sixfeel(arr[aile_time])+"\n");
+				textArea_aile.append((aile_time+1)+">>"+data.sixfeel(arr[aile_time+1])+"\n");
+				textArea_aile.append((aile_time+2)+">>"+data.sixfeel(arr[aile_time+2])+"\n");
+				//¤§«á¬ö¿ı¨ìtxt			
 				try {
-					Bufwrite();
+					data.Bufwrite();
 				} catch (IOException e1) {
 					e1.printStackTrace();
-				}
+				} 
 			}
 		});
 		button_aile_error.setBounds(109, 130, 87, 23);
@@ -264,14 +206,19 @@ public class club extends JFrame {
 		JButton btnReturn_aixi = new JButton("return 0");
 		btnReturn_aixi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Returntozero GUI = new Returntozero();
 				if(aixi_time>=96){
-					Returntozero GUI = new Returntozero();
 					GUI.setVisible(true);
 					if(GUI.telltrue()){
 						aixi_time=0;
+						try {
+							data.Bufwrite();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						} 					
 					}
 				}
+				GUI.tellfalse();
 			}
 		});
 		btnReturn_aixi.setBounds(10, 163, 87, 23);

@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 
 
 public class Returntozero extends JDialog {
-	boolean A;
+	boolean A=false;
 	private final JPanel contentPanel = new JPanel();
 
 	/**
@@ -33,8 +33,11 @@ public class Returntozero extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	Boolean telltrue(){	
+	Boolean telltrue(){
 			return A;	
+	}
+	void tellfalse(){
+		A=false;	
 	}
 
 	public Returntozero() {
@@ -55,7 +58,7 @@ public class Returntozero extends JDialog {
 				JButton okButton = new JButton("Yes");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						//Â§iÂ¶DJF Â¥iÂ¥HÃ‚k0
+						//§i¶DJF ¥i¥HÂk0
 						A=true;
 					}
 				});
