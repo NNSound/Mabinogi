@@ -209,6 +209,7 @@ public class club extends JFrame {
 				Returntozero GUI = new Returntozero();
 				if(aixi_time>=96){
 					GUI.setVisible(true);
+					//GUI.setModal(true);
 					if(GUI.telltrue()){
 						aixi_time=0;
 						try {
@@ -230,6 +231,7 @@ public class club extends JFrame {
 				Returntozero GUI = new Returntozero();
 				if(aile_time>=96){
 					GUI.setVisible(true);//應該等待GUI回傳true
+					//GUI.setModal(true);
 					if(GUI.telltrue()){
 						aile_time=0;
 						try {
