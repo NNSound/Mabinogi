@@ -227,8 +227,19 @@ public class club extends JFrame {
 		JButton buttonReturn_aile = new JButton("return 0");
 		buttonReturn_aile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(aile_time>=96)
-					aile_time=0;
+				Returntozero GUI = new Returntozero();
+				if(aile_time>=96){
+					GUI.setVisible(true);//應該等待GUI回傳true
+					if(GUI.telltrue()){
+						aile_time=0;
+						try {
+							data.Bufwrite();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						} 					
+					}
+				}
+				GUI.tellfalse();
 			}
 		});
 		buttonReturn_aile.setBounds(109, 162, 87, 23);
