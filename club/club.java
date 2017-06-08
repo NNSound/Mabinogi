@@ -1,9 +1,8 @@
 package club;
 
+import java.awt.AWTException;
 import java.awt.EventQueue;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -18,7 +17,7 @@ import java.awt.event.ActionEvent;
 
 
 public class club extends JFrame {
-/*p
+/*
  * 每個角色應該有各自的計數器 放在外部文件
  * 內部應有陣列存放騎士團表格供GUI參照
  * 每次觸發btn時應即時更改外部文件
@@ -37,82 +36,19 @@ public class club extends JFrame {
 (例：第一天 97(O)→結束98(X)→)→ 第二天 1(O)→2(O)→3(O)→ ...)
 
  */
-	static String[] arr = new String[2];//宣告陣列 放置input的值
-	static int aile_time,aixi_time;
-	static int aile[]= {1,3,4,3,1,3,1,1,2,1,//1~10 //艾樂
-				 2,5,2,2,4,6,2,5,1,2,//11~20
-				 6,5,6,6,4,2,4,3,5,5,//21~30
-				 1,1,1,2,2,2,1,4,1,1,
-				 4,3,3,2,4,3,4,4,1,4,
-				 2,1,1,2,2,6,6,1,2,4,
-				 3,5,2,2,4,1,2,1,1,1,
-				 3,2,2,3,2,1,2,1,2,5,
-				 1,2,4,1,5,3,2,2,4,4,
-				 1,2,4,1,1,6,4,6,2};
-	
-	static int aixi[]= {4,3,5,6,5,3,6,6,3,1,//艾希
-				 2,3,6,3,2,3,1,4,3,3,
-				 3,6,3,4,3,6,1,5,3,3,
-				 3,6,4,6,2,6,3,4,1,2,
-				 3,3,1,6,4,6,4,3,3,6,
-				 3,2,6,3,1,3,3,3,5,6,
-				 3,3,1,2,6,6,3,3,3,5,
-				 3,2,4,3,5,3,5,6,1,3,
-				 3,6,2,3,3,5,6,1,1,5,
-				 5,5,5,6,3,3,1,4,1};
-
 	
 	private JPanel contentPane;
-
+	int arr[];
+	robotfile data=new robotfile();
+	int aile_time=data.telltime("aile");
+	int aixi_time=data.telltime("aixi");
+//int aile_time,aixi_time;
 	/**
 	 * Launch the application.
 	 */
-	public static String sixfeel(int i){
-		String name;
-		if(i==1)
-			name="1.任務";
-		else if(i==2)
-			name="2.修練";
-		else if(i==3)
-			name="3.遊戲";
-		else if(i==4)
-			name="4.食物";
-		else if(i==5)
-			name="5.時尚";
-		else 
-			name="6.戀愛";
-		return name;		
-	}
-	private static void Bufwrite() throws IOException{
-		FileWriter fw = new FileWriter("74club.txt");
-		fw.write("aile "+aile_time+"\naixi "+aixi_time);
-		fw.flush();
-		fw.close();
-	}
-	private static void BufRead(String Q) throws IOException{
-	    FileReader fr = new FileReader(Q);//讀取檔案
-		BufferedReader br = new BufferedReader(fr);//讀取檔案中的字串
-		String line;//讀取第N行的字串
-	    int k=0;//計數器
-	    while((line = br.readLine())!=null)//當檔案中還有資料時 就執行迴圈
-	    {	  
-	    	arr[k]= line;//將資料放到陣列	    	
-	    	k++;//計數器+1
-	    }	   
-	}//end BufRead
-	public static void main(String[] args) {
-		try {
-			BufRead("74club.txt");
-		} catch (IOException e1) {
-			// TODO 自動產生的 catch 區塊
-			e1.printStackTrace();
-		}
-		aile_time=Integer.valueOf(arr[0].substring(5,7));
-		aixi_time=Integer.valueOf(arr[1].substring(5,7));	
+	public static void main(String[] args) throws AWTException{
+		
 		//System.out.println(aile_time);
-		//System.out.println(sixfeel(aile[aile_time]));		
-		
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -128,7 +64,8 @@ public class club extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public club() {
+	public club() throws AWTException{
+//	 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -145,17 +82,19 @@ public class club extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JTextArea textArea_aixi = new JTextArea();
-		textArea_aixi.setBounds(10, 35, 87, 52);		
-		textArea_aixi.append((aixi_time+1)+">>"+sixfeel(aixi[aixi_time])+"\n");
-		textArea_aixi.append((aixi_time+2)+">>"+sixfeel(aixi[aixi_time+1])+"\n");
-		textArea_aixi.append((aixi_time+3)+">>"+sixfeel(aixi[aixi_time+2])+"\n");
+		textArea_aixi.setBounds(10, 35, 87, 52);
+		arr=data.Tellarr("aixi");
+		textArea_aixi.append((aixi_time+1)+">>"+data.sixfeel(arr[aixi_time])+"\n");
+		textArea_aixi.append((aixi_time+2)+">>"+data.sixfeel(arr[aixi_time+1])+"\n");
+		textArea_aixi.append((aixi_time+3)+">>"+data.sixfeel(arr[aixi_time+2])+"\n");
 		contentPane.add(textArea_aixi);
 		
 		JTextArea textArea_aile = new JTextArea();
 		textArea_aile.setBounds(107, 35, 89, 52);
-		textArea_aile.append((aile_time+1)+">>"+sixfeel(aile[aile_time])+"\n");
-		textArea_aile.append((aile_time+2)+">>"+sixfeel(aile[aile_time+1])+"\n");
-		textArea_aile.append((aile_time+3)+">>"+sixfeel(aile[aile_time+2])+"\n");
+		arr=data.Tellarr("aile");
+		textArea_aile.append((aile_time+1)+">>"+data.sixfeel(arr[aile_time])+"\n");
+		textArea_aile.append((aile_time+2)+">>"+data.sixfeel(arr[aile_time+1])+"\n");
+		textArea_aile.append((aile_time+3)+">>"+data.sixfeel(arr[aile_time+2])+"\n");
 		contentPane.add(textArea_aile);
 		
 		JButton button_aixi = new JButton("+1");
@@ -166,15 +105,17 @@ public class club extends JFrame {
 					aixi_time++;
 //				else if(aixi_time==96)//按完97 之後該回到1 
 //					aixi_time=0;
-				textArea_aixi.setText((aixi_time)+">>"+sixfeel(aixi[aixi_time])+"\n");
-				textArea_aixi.append((aixi_time+1)+">>"+sixfeel(aixi[aixi_time+1])+"\n");
-				textArea_aixi.append((aixi_time+2)+">>"+sixfeel(aixi[aixi_time+2])+"\n");
+				arr=data.Tellarr("aixi");
+				textArea_aixi.setText((aixi_time+1)+">>"+data.sixfeel(arr[aixi_time])+"\n");
+				textArea_aixi.append((aixi_time+2)+">>"+data.sixfeel(arr[aixi_time+1])+"\n");
+				textArea_aixi.append((aixi_time+3)+">>"+data.sixfeel(arr[aixi_time+2])+"\n");
 				//之後紀錄到txt
-				try {
-					Bufwrite();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+					try {
+						data.Bufwrite(aile_time,aixi_time);
+					} catch (IOException e) {
+						e.printStackTrace();
+					} 
+				
 			}
 		});
 		button_aixi.setBounds(10, 97, 87, 23);
@@ -188,15 +129,19 @@ public class club extends JFrame {
 					aile_time++;
 //				else if(aile_time==96)//按完97 之後該回到1 
 //					aile_time=0;
-				textArea_aile.setText((aile_time)+">>"+sixfeel(aile[aile_time])+"\n");
-				textArea_aile.append((aile_time+1)+">>"+sixfeel(aile[aile_time+1])+"\n");
-				textArea_aile.append((aile_time+2)+">>"+sixfeel(aile[aile_time+2])+"\n");
+				arr=data.Tellarr("aile");
+				textArea_aile.setText((aile_time+1)+">>"+data.sixfeel(arr[aile_time])+"\n");
+				textArea_aile.append((aile_time+2)+">>"+data.sixfeel(arr[aile_time+1])+"\n");
+				textArea_aile.append((aile_time+3)+">>"+data.sixfeel(arr[aile_time+2])+"\n");
 				//之後紀錄到txt
+				
 				try {
-					Bufwrite();
+					data.Bufwrite(aile_time,aixi_time);
 				} catch (IOException e1) {
+					// TODO 自動產生的 catch 區塊
 					e1.printStackTrace();
 				}
+				
 
 			}
 		});
@@ -207,15 +152,20 @@ public class club extends JFrame {
 		button_aixi_error.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aixi_time--;
-				textArea_aixi.setText((aixi_time)+">>"+sixfeel(aixi[aixi_time])+"\n");
-				textArea_aixi.append((aixi_time+1)+">>"+sixfeel(aixi[aixi_time+1])+"\n");
-				textArea_aixi.append((aixi_time+2)+">>"+sixfeel(aixi[aixi_time+2])+"\n");
+				arr=data.Tellarr("aixi");
+
+				textArea_aixi.setText((aixi_time)+">>"+data.sixfeel(arr[aixi_time])+"\n");
+				textArea_aixi.append((aixi_time+1)+">>"+data.sixfeel(arr[aixi_time+1])+"\n");
+				textArea_aixi.append((aixi_time+2)+">>"+data.sixfeel(arr[aixi_time+2])+"\n");
 				//之後紀錄到txt
-				try {
-					Bufwrite();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				
+					try {
+						data.Bufwrite(aile_time,aixi_time);
+					} catch (IOException e1) {
+						// TODO 自動產生的 catch 區塊
+						e1.printStackTrace();
+					}
+				
 			}
 		});
 		button_aixi_error.setBounds(10, 130, 87, 23);
@@ -225,15 +175,16 @@ public class club extends JFrame {
 		button_aile_error.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aile_time--;
-				textArea_aile.setText((aile_time)+">>"+sixfeel(aile[aile_time])+"\n");
-				textArea_aile.append((aile_time+1)+">>"+sixfeel(aile[aile_time+1])+"\n");
-				textArea_aile.append((aile_time+2)+">>"+sixfeel(aile[aile_time+2])+"\n");
-				//之後紀錄到txt
+				arr=data.Tellarr("aile");
+				textArea_aile.setText((aile_time)+">>"+data.sixfeel(arr[aile_time])+"\n");
+				textArea_aile.append((aile_time+1)+">>"+data.sixfeel(arr[aile_time+1])+"\n");
+				textArea_aile.append((aile_time+2)+">>"+data.sixfeel(arr[aile_time+2])+"\n");
+				//之後紀錄到txt			
 				try {
-					Bufwrite();
+					data.Bufwrite(aile_time,aixi_time);
 				} catch (IOException e1) {
 					e1.printStackTrace();
-				}
+				} 
 			}
 		});
 		button_aile_error.setBounds(109, 130, 87, 23);
@@ -242,25 +193,48 @@ public class club extends JFrame {
 		JButton btnAuto_aixi = new JButton("auto");
 		btnAuto_aixi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					new robot_talk("aixi");
+				} catch (AWTException e1) {
+					e1.printStackTrace();
+				}
+				aixi_time=data.telltime("aixi");
 			}
 		});
 		btnAuto_aixi.setBounds(10, 195, 87, 23);
 		contentPane.add(btnAuto_aixi);
 		
 		JButton btnAuto_aili = new JButton("auto");
+		btnAuto_aili.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					new robot_talk("aile");
+				} catch (AWTException e1) {
+					e1.printStackTrace();
+				}
+				aile_time=data.telltime("aile");
+			}
+		});
 		btnAuto_aili.setBounds(109, 195, 87, 23);
 		contentPane.add(btnAuto_aili);
 		
 		JButton btnReturn_aixi = new JButton("return 0");
 		btnReturn_aixi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				telltrue tt;
-				//if(aixi_time>=96){
-					Returntozero GUI = new Returntozero();
+				Returntozero GUI = new Returntozero();
+				if(aixi_time>=96){
+					GUI.setModal(true);
 					GUI.setVisible(true);
-					//tt.telltrue(true);
-				//}
+					if(GUI.telltrue()){
+						aixi_time=0;
+						try {
+							data.Bufwrite(aile_time,aixi_time);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						} 					
+					}
+				}
+				GUI.tellfalse();
 			}
 		});
 		btnReturn_aixi.setBounds(10, 163, 87, 23);
@@ -269,8 +243,20 @@ public class club extends JFrame {
 		JButton buttonReturn_aile = new JButton("return 0");
 		buttonReturn_aile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(aile_time>=96)
-					aile_time=0;
+				Returntozero GUI = new Returntozero();
+				if(aile_time>=96){
+					GUI.setModal(true);
+					GUI.setVisible(true);
+					if(GUI.telltrue()){
+						aile_time=0;
+						try {
+							data.Bufwrite(aile_time,aixi_time);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						} 					
+					}
+				}
+				GUI.tellfalse();
 			}
 		});
 		buttonReturn_aile.setBounds(109, 162, 87, 23);
@@ -278,16 +264,4 @@ public class club extends JFrame {
 		
 		
 	}
-}
-class telltrue                                     //一個隨便定義的Class  表示 Dialog也可以回傳給Frame 自訂義Class
-{
- boolean s;
- public telltrue(boolean k)
- {
-  s=k;
- }
- public boolean getboolean()
- {
-  return s;
- }
 }
