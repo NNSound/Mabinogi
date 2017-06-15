@@ -1,3 +1,4 @@
+package demo;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -18,74 +19,59 @@ public class demo {
 	在這邊請輸入你要執行幾次技能 建議一開始次數不要太大 等熟悉之後再慢慢增加次數
 	*/
 	
-	public static void main(String[] args)  throws AWTException {
+	public static void main(String[] args)  throws AWTException	 {
 		new demo();
 	}
 	demo() throws AWTException{
-		robot.delay(10000);//程式會等待10秒之後才開始執行 請確保在10秒內切換到瑪奇的視窗		
-		bot();
-	}
-	void ddemo(){
-	while(i<time){
-			//按F1
-			robot.keyPress(KeyEvent.VK_F1);//表示按下按鍵 F1
-			robot.delay(100);//表示停頓100微渺
-			robot.keyRelease(KeyEvent.VK_F1);//表示鬆開按鍵F1
-			
-			robot.delay(5000);//表示停頓2秒 這邊請依照各自需求調整技能多久之後需要取消
-			
-			//取消技能
-			robot.keyPress(KeyEvent.VK_ESCAPE);//表示按下按鍵esc
-			robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_ESCAPE);//表示鬆開按鍵esc
-			
-			//表示做完一次
+		robot.delay(10000);//程式會等待10秒之後才開始執行 請確保在10秒內切換到瑪奇的視窗
+
+		while(i<time){
+			musicP();
 			i++;
 			}
 	}
-		void musicP(){
-		while(i<9){//分身評價
+	void musicP(){
 			robot.keyPress(KeyEvent.VK_F1);
 			robot.delay(100);
 			robot.keyRelease(KeyEvent.VK_F1);
-			robot.delay(2000);
+			robot.delay(3000);
 			esc();
 			robot.keyPress(KeyEvent.VK_F2);
 			robot.delay(100);
 			robot.keyRelease(KeyEvent.VK_F2);
-			robot.delay(2000);
+			robot.delay(3000);
 			esc();
-			robot.delay(8000);
-			i++;
-			}
+			robot.keyPress(KeyEvent.VK_F3);
+			robot.delay(100);
+			robot.keyRelease(KeyEvent.VK_F3);
+			robot.delay(3000);
+			esc();
+			robot.keyPress(KeyEvent.VK_F4);
+			robot.delay(100);
+			robot.keyRelease(KeyEvent.VK_F4);
+			robot.delay(3000);
+			esc();
+			
 	}
-	void bot(){//人偶
-		while(true){
-		robot.keyPress(KeyEvent.VK_1);//叫出人偶
-		robot.delay(100);
-		robot.keyRelease(KeyEvent.VK_1);
-		robot.delay(3000);		
-		
-		robot.keyPress(KeyEvent.VK_2);//6幕
-		robot.delay(100);
-		robot.keyRelease(KeyEvent.VK_2);
+	void esc(){
+		robot.keyPress(KeyEvent.VK_ESCAPE);
 		robot.delay(500);
-		robot.keyPress(KeyEvent.VK_2);
-		robot.delay(100);
-		robot.keyRelease(KeyEvent.VK_2);
-		robot.delay(4000);
-		
-		robot.keyPress(KeyEvent.VK_3);//7幕
-		robot.delay(4000);	
-		robot.keyRelease(KeyEvent.VK_3);
-		robot.delay(5000);
-		
-		
-		robot.keyPress(KeyEvent.VK_1);//收人偶
-		robot.delay(100);
-		robot.keyRelease(KeyEvent.VK_1);
-		robot.delay(100);
-		}
+		robot.keyRelease(KeyEvent.VK_ESCAPE);
 	}
-
+    void example(){
+    	//按F1
+		robot.keyPress(KeyEvent.VK_F1);//表示按下按鍵 F1
+		robot.delay(100);//表示停頓100微渺
+		robot.keyRelease(KeyEvent.VK_F1);//表示鬆開按鍵F1
+		
+		robot.delay(5000);//表示停頓2秒 這邊請依照各自需求調整技能多久之後需要取消
+		
+		//取消技能
+		robot.keyPress(KeyEvent.VK_ESCAPE);//表示按下按鍵esc
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_ESCAPE);//表示鬆開按鍵esc
+		
+		//表示做完一次
+		i++;
+    }
 }
