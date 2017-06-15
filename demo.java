@@ -43,6 +43,22 @@ public class demo {
 			i++;
 			}
 	}
+		void musicP(){
+		while(i<9){//分身評價
+			robot.keyPress(KeyEvent.VK_F1);
+			robot.delay(100);
+			robot.keyRelease(KeyEvent.VK_F1);
+			robot.delay(2000);
+			esc();
+			robot.keyPress(KeyEvent.VK_F2);
+			robot.delay(100);
+			robot.keyRelease(KeyEvent.VK_F2);
+			robot.delay(2000);
+			esc();
+			robot.delay(8000);
+			i++;
+			}
+	}
 	void bot(){//人偶
 		while(true){
 		robot.keyPress(KeyEvent.VK_1);//叫出人偶
