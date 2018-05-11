@@ -1,0 +1,53 @@
+[General]
+SyntaxVersion=2
+BeginHotkey=121
+BeginHotkeyMod=0
+PauseHotkey=0
+PauseHotkeyMod=0
+StopHotkey=123
+StopHotkeyMod=0
+RunOnce=1
+EnableWindow=
+MacroID=d4e5256b-e5ce-497d-898f-bf7c0e205d7d
+Description=貿易限定品_自動備份
+Enable=1
+AutoRun=0
+[Repeat]
+Type=0
+Number=1
+[SetupUI]
+Type=2
+QUI=
+[Relative]
+SetupOCXFile=
+[Comment]
+
+[Script]
+Hwnd = Plugin.Window.Find("mabinogi", 0)  
+Delay 500
+Call Plugin.Window.Active(Hwnd)
+Delay 500
+
+
+
+
+Do
+	//點擊NPC對話
+	KeyDown "Ctrl", 1
+	Delay 500
+	MoveTo 1630, 400
+	LeftClick 1
+	
+	
+	KeyPress 32, 4 : Delay 100
+	MoveTo 540, 945
+	LeftClick 1
+	
+	
+	FindColorEx 715, 670, 720, 680, "7BC8DE", 0, 0.8, intX, intY
+	If intX > 0 And intY > 0 Then 
+		Exit Do
+	End If
+Loop
+
+MessageBox "限定品跟新"
