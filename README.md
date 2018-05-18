@@ -32,4 +32,4 @@ Returntozero.java
 -----------------
 這裡的版本只有艾希與艾樂兩位團員而已，日後有需要在增加其他吧。
 
-https://www.google.com.tw/url?sa=t&source=web&rct=j&url=http://zwindr.blogspot.com/2016/07/python-selenium.html%3Fm%3D1&ved=2ahUKEwiK4ZrB447bAhWCx7wKHULTBSMQFjALegQIBhAB&usg=AOvVaw0Fb1NPeZ3Eih4XxjlhY4df
+http://zwindr.blogspot.tw/2016/07/python-selenium.html?m=1
